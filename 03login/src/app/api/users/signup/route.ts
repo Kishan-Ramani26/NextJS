@@ -30,14 +30,14 @@ export async function POST(requset: NextRequest) {
     });
 
     const savedUser = await newUser.save();
-    console.log(savedUser);
+    console.log("Saved user",savedUser);
 
     await sendEmail({ email, emailType: "verify", userID: savedUser._id });
 
     return NextResponse.json({
-        message : " User registered successfully",
-        sucssss: true,
-        savedUser
+      message: " User registered successfully",
+      sucssss: true,
+      savedUser
     });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -25,13 +25,13 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  forgotPasswordToken: string,
+  forgotPasswordToken: String,
   forgotPasswordExpiry: Date,
-  verifyToken: string,
+  verifyToken: String,
   verifyTokenExpiry: Date,
-});
+},{timestamps:true});
 
 
-const User = mongoose.model.users || mongoose.model("user s", userSchema);
+const User = mongoose.model.users || mongoose.model("users", userSchema);
 
 export default User;
