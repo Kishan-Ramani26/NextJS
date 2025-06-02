@@ -40,7 +40,8 @@ export async function POST(request: NextRequest) {
         })
 
         response.cookies.set("token", token, {
-            httpOnly: true
+            httpOnly: true,
+            expires :Date.now()
         })
 
         return response;
