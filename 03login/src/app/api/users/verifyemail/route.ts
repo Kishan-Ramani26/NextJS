@@ -1,5 +1,7 @@
 import { connectdb } from '@/dbconfig/dbconfig';
 import User from '@/models/userModel';
+import { error } from 'console';
+import { verify } from 'crypto';
 import { NextResponse, NextRequest } from 'next/server';
 
 connectdb();
@@ -9,12 +11,32 @@ export async function POST(request: NextRequest) {
 
         const reqBody = await request.json();
 
-        const {token} = reqBody;
+        const { token } = reqBody;
         console.log(token);
 
-        if(token){
-            
+        const user = await User.findOne({
+            verifyToken: token,
+            verifyTokenExpiry: { $gt: Date.now() }
+        })
+
+        if (!user) {
+            return NextResponse.json(
+                { error: "Verfiy your email." },
+                { status: 400 }
+            )
         }
+        console.log(user)
+
+        user.isVerfied = true;
+        user.verifyToken = undefined;
+        user.verifyTokenExpiry = undefined;
+
+        const save = await user.save();
+
+
+        return NextResponse.json(
+            { message: "verferiyed successfuly" }, { status: 200 }
+        );
 
 
     } catch (error) {
