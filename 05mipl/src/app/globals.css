@@ -29,15 +29,3 @@ body {
   box-sizing: border-box;
 }
 
-/* h-full w-[14rem] block bg-[#27386d] fixed top-0 left-0 z-50 md:shrink-0 */
-
-/* @media (max-width: 640px) {
-  nav {
-    display: none;
-  } */
-/* bg-[#27386d] fixed top-0 left-0 z-50 
-
-  .menu-button {
-    display: inline-block;
-  }
-} */
