@@ -70,7 +70,6 @@ const page = () => {
         trigger: ".page3",
         start: "top 50%",
         toggleAttribute: "restart pause reverse pause",
-        markers: true,
       }
     });
   });
