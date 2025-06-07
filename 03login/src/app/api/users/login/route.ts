@@ -8,44 +8,43 @@ connectdb();
 
 export async function POST(request: NextRequest) {
     try {
-        const reqBody = await request.json();
+        const reqBody = await request.json()
         const { email, password } = reqBody;
         console.log(reqBody);
 
-        const user = await User.find
-
+        //check if user exists
+        const user = await User.findOne({ email })
         if (!user) {
-            return NextResponse.json({ error: "User not found" }, { status: 404 });
+            return NextResponse.json({ error: "User does not exist" }, { status: 400 })
         }
-        console.log("User found", user);
+        console.log("user exists");
 
-        const validPassword = await bcrypt.compare(password, user.password);
 
+        //check if password is correct
+        const validPassword = await bcrypt.compare(password, user.password)
         if (!validPassword) {
-            return NextResponse.json({ error: "Invalid password" }, { status: 401 });
+            return NextResponse.json({ error: "Invalid password" }, { status: 400 })
         }
-        console.log("Password is valid");
+        console.log(user);
 
+        //create token data
         const tokenData = {
             id: user._id,
-            email: user.email,
-            username: user.username
+            username: user.username,
+            email: user.email
         }
-
-        const token = jwt.sign(tokenData, process.env.TOKNEN_SECRET!, { expiresIn: '1h' });
+        //create token
+        const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, { expiresIn: "1d" })
 
         const response = NextResponse.json({
-            message: "Login successfuly",
-            success: true
+            message: "Login successful",
+            success: true,
         })
-
         response.cookies.set("token", token, {
             httpOnly: true,
-            expires :Date.now()
+
         })
-
         return response;
-
     } catch (error) {
         return NextResponse.json({ error: "An error occurred" }, { status: 500 });
     }
