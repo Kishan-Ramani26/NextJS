@@ -49,8 +49,9 @@ const page = () => {
         trigger:".page2",
         start:"top top",
         end:"bottom top",
-        scrub: 3,
+        scrub: 2,
         // markers: true,
+        toggleAttribute: "restart pause reverse pause",
       }
     })
 
@@ -69,7 +70,7 @@ const page = () => {
       scrollTrigger: {
         trigger: ".page3",
         start: "top 50%",
-        toggleAttribute: "restart pause reverse pause",
+        toggleAttribute: "restart ",
       }
     });
   });
@@ -129,7 +130,7 @@ const page = () => {
           </div>
          <div className=" mt-[10vw]">
            <h1 className="absolute top-0 left-[40%] overflow-hidden">
-            <span>Improve your animation skills</span>
+            <span className="pg3text">Improve your animation skills</span>
           </h1>
           <h1 className="absolute top-[20%] left-[40%] overflow-hidden text-6xl">
             <span className="pg3text">Motion on websites is a must-</span>
@@ -153,6 +154,17 @@ const page = () => {
             <span className="pg3text">like a pro.</span>
           </h1>
          </div>
+        </div>
+
+        <div className="page4 h-screen w-full relative px-6 py-7">
+          <div className="w-full flex items-start justify-center">
+              <h1 className="overflow-hidden relative">
+                <i className="ri-corner-down-right-line text-7xl font-light"></i>
+                <span className="text-7xl font-light">Explore Collection</span>
+                
+              </h1>
+              <div className="absolute w-full h-[0.2vw] bg-black top-[8vw] scale-48"></div>
+          </div>
         </div>
       </main>
     </>
