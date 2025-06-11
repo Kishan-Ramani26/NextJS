@@ -1,7 +1,5 @@
 import { connectdb } from '@/dbconfig/dbconfig';
 import User from '@/models/userModel';
-import { error } from 'console';
-import { verify } from 'crypto';
 import { NextResponse, NextRequest } from 'next/server';
 
 connectdb();
