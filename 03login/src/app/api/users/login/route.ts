@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import User from '@/models/userModel'
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import toast, { Toaster } from "react-hot-toast";
 
 connectdb();
 
@@ -17,12 +18,14 @@ export async function POST(request: NextRequest) {
 
         if (!user) {
             return NextResponse.json({ error: "User does not exist" }, { status: 400 })
+            toast.error("User does not exist");
         }
         console.log("user exists");
 
         const validPassword = await bcrypt.compare(password, user.password)
         if (!validPassword) {
             return NextResponse.json({ error: "Invalid password" }, { status: 400 })
+            toast.error("Invalid password");
         }
         console.log(user);
 
@@ -43,7 +46,7 @@ export async function POST(request: NextRequest) {
         });
 
         return response;
-        
+
     } catch (error) {
         return NextResponse.json({ error: "An error occurred" }, { status: 500 });
     }
