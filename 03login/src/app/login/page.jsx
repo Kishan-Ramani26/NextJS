@@ -65,7 +65,12 @@ function page() {
         className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 disabled:bg-gray-400"
         onClick={onLogin}
         disabled={buttonDisabled}
-      >
+        style={{
+          backgroundColor: buttonDisabled ? "#ccc" : "#4CAF50",
+          color: "white",
+          cursor: buttonDisabled ? "not-allowed" : "pointer",
+        }}
+      > 
         login
       </button>
        <Toaster />
