@@ -16,45 +16,49 @@ const Page = () => {
     setError("");
   };
 
-  
   return (
-    <div className="h-screen w-full flex items-center justify-center shadow-2xl flex-col bg-blue-100 text-black max-md:px-4">
-      <h1 className="text-xl font-bold mb-6">Welcome to the Login Page</h1>
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm flex flex-col gap-4"
-      >
-        <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-        {error && <div className="text-red-500 text-sm">{error}</div>}
-        <input
-          type="email"
-          placeholder="Email"
-          className="border rounded px-3 py-2"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          className="border rounded px-3 py-2"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <Link
-          href={"/forgot-password"}
-          className="text-blue-500 text-sm  hover:underline"
+    <div className="h-screen w-full flex items-center justify-center shadow-2xl text-white max-md:px-4">
+      <img className="absolute h-full w-full object-cover object-center -z-10" src="img2.jpg" />
+      <div className="w-1/2 flex items-center justify-center flex-col">
+        {/* <h1 className="text-xl font-bold mb-6">Welcome to the Login Page</h1> */}
+        <form
+          onSubmit={handleSubmit}
+          className=" p-8 rounded-3xl border-1 border-gray-800 shadow-lg w-full max-w-sm flex flex-col gap-4 backdrop-blur-xl"
         >
-          <p>Forgot Password ?</p>
-        </Link>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600 transition cursor-pointer"
-        >
-          Login
-        </button>
-      </form>
+         <div className="w-full text-center relative flex items-center justify-center mb-4 overflow-hidden">
+            <img className="h-full w-[50%] object-center object-cover rounded-full" src="img1.avif" />
+         </div>
+          {error && <div className="text-red-500 text-md">{error}</div>}
+          <input
+            type="email"
+            placeholder="Email"
+            className="border rounded px-3 py-2"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            className="border rounded px-3 py-2"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <Link
+            href={"/forgot-password"}
+            className="text-blue-500 text-sm  hover:underline"
+          >
+            <p>Forgot Password ?</p>
+          </Link>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600 transition cursor-pointer"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
