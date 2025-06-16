@@ -46,7 +46,7 @@ const page = () => {
         >
           Get User Details
         </button>
-        <h2 className="text-2xl text-white">
+        <h2 className="text-xl text-white">
           <Link href={`/profile/${data}`}>
             User ID: {data ? data : "Nothing"}
           </Link>
