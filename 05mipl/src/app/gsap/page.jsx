@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React,{useRef} from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -7,9 +7,14 @@ import { SplitText } from "gsap/SplitText";
 import Header from "../../Components/Header";
 import Navbar from "../../Components/Navbar";
 import { random } from "gsap/gsap-core";
+import { ReactLenis, useLenis } from 'lenis/react'
+
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 const page = () => {
+
+  const lenisRef = useRef()
+
   useGSAP(() => {
     // const tl = gsap.timeline();
 
@@ -51,7 +56,7 @@ const page = () => {
         end: "bottom top",
         scrub: 2,
         // markers: true,
-        toggleAttribute: "restart pause reverse pause",
+        toggleAttribute: "play pause reverse play",
       },
     });
 
@@ -77,15 +82,15 @@ const page = () => {
     let page4 = SplitText.create(".pg4text", { type: "chars" });
 
     gsap.from(page4.chars, {
-      x:random(-100,100),
-      y:random(-100,100),
-      duration:1,
-      stagger:{
-        from:random,
+      x: random(-100, 100),
+      y: random(-100, 100),
+      duration: 1,
+      stagger: {
+        from: random,
         ease: "power2.in",
-        amount:1
-      }
-    })
+        amount: 1,
+      },
+    });
   });
 
   return (
@@ -181,7 +186,9 @@ const page = () => {
           <div className="w-full flex items-start justify-center">
             <h1 className="overflow-hidden relative">
               <i className="ri-corner-down-right-line text-7xl font-light"></i>
-              <span className="pg4text text-7xl font-light">Explore Collection</span>
+              <span className="pg4text text-7xl font-light">
+                Explore Collection
+              </span>
             </h1>
             <div className="absolute w-full h-[0.2vw] bg-black top-[8vw] scale-48"></div>
           </div>
