@@ -6,18 +6,19 @@ import bcrypt from "bcryptjs";
 export async function POST(req: NextRequest) {
     await dbconnect();
     try {
-        const {email, password} = await req.json();
+        const reqBody = await req.json();
+        const {email, password} = reqBody
 
         const existingUser = await UserModel.findOne({email});
 
-        if(existingUser){
+        if(!existingUser){
             return NextResponse.json({
                 success: false,
                 message: "User not found"
             },{status: 400})
         }
 
-        const isValidPassword = await bcrypt.compare(password, existingUser!.password);
+        const isValidPassword = await bcrypt.compare(password, existingUser.password);
 
         if(!isValidPassword){
             return NextResponse.json({
