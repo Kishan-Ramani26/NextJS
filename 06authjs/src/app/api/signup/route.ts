@@ -25,12 +25,13 @@ export async function POST(req: NextRequest) {
             email,
             password: hashedPassword,
             isVerified: false,
-            isAcceptingMessages: true,
+            isAcceptedMessages: true,
             messages: [],
-            verificationCode: crypto.randomBytes(32).toString("hex")
+            verifieCode: crypto.randomBytes(32).toString("hex"),
+            verifeCodeExpires: new Date(Date.now() + 60 * 60 * 1000) // 1 hour from now
         })
 
-        const verificationEmail = await sendVerificationEmail(email, username, newUser.verificationCode);
+        const verificationEmail = await sendVerificationEmail(email, username, newUser.verifieCode);
         if(!verificationEmail.success){
             return NextResponse.json({
                 success: false,
