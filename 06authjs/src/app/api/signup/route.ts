@@ -3,48 +3,64 @@ import dbconnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
 import { sendVerificationEmail } from "@/helpers/sendVerficationEmail";
-import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
     await dbconnect();
     try {
         const { username, email, password } = await req.json();
-        const existingUser = await UserModel.findOne({ email });
 
-        if (existingUser) {
+        // Check if user already exists
+        const existingUser = await UserModel.findOne({
+            username,
+            isVerified: true
+        });
+
+        const existingUserByEmail = await UserModel.findOne({email})
+
+        const verifieCode  = Math.floor(100000 + Math.random() * 900000)
+
+        if (existingUserByEmail) {
             return NextResponse.json({
                 success: false,
-                message: "User already exists"
+                message: "User already exists with this email"
             }, { status: 400 })
         }
+        else {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const expireDates = new Date()
+            expireDates.setHours(expireDates.getHours() + 1)
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+            const newUser = await UserModel.create({
+                username,
+                email,
+                password: hashedPassword,
+                isVerified: false,
+                isAcceptedMessages: true,
+                messages: [],
+                verifieCode,
+                verifeCodeExpires: new Date(Date.now() + 60 * 60 * 1000) // 1 hour from now
+            })
 
-        const newUser = await UserModel.create({
-            username,
-            email,
-            password: hashedPassword,
-            isVerified: false,
-            isAcceptedMessages: true,
-            messages: [],
-            verifieCode: crypto.randomBytes(32).toString("hex"),
-            verifeCodeExpires: new Date(Date.now() + 60 * 60 * 1000) // 1 hour from now
-        })
+            await newUser.save()
+            
+            // Send verification email
+            const verificationEmail = await sendVerificationEmail(email, username, newUser.verifieCode);
 
-        const verificationEmail = await sendVerificationEmail(email, username, newUser.verifieCode);
-        if(!verificationEmail.success){
+            if(!verificationEmail.success){
+                return NextResponse.json({
+                    success: false,
+                    message: "Error sending verification email"
+                },{status: 500})
+            }
+
             return NextResponse.json({
-                success: false,
-                message: "Error sending verification email"
-            },{status: 500})
+                success: true,
+                message: "User created successfully",
+                user: newUser
+            },{status: 201})
         }
 
-        return NextResponse.json({
-            success: true,
-            message: "User created successfully",
-            user: newUser
-        },{status: 201})
-
+        
     } catch (error) {
         console.error("Error in signup route: ", error);
         return NextResponse.json({
