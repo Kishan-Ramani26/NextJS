@@ -14,7 +14,7 @@ const page = () => {
     password: "",
   });
 
-  const [buttonDisabled, setbuttonDisabled] = useState(false);
+  const [buttonDisabled, setbuttonDisabled] = useState(true);
   const [loading, setloading] = useState(false);
 
   const onSignup = async () => {
@@ -31,19 +31,20 @@ const page = () => {
       console.error("Error during signup:", error);
       toast.error("Signup failed. Please try again.");
     }
-
-    useEffect(() => {
-      if (
-        user.username.length > 0 &&
-        user.email.length > 0 &&
-        user.password.length > 0
-      ) {
-        setbuttonDisabled(false);
-      } else {
-        setbuttonDisabled(true);
-      }
-    }, [user]);
   };
+
+  useEffect(() => {
+    if (
+      user.username.length > 0 &&
+      user.email.length > 0 &&
+      user.password.length > 0
+    ) {
+      setbuttonDisabled(false);
+    } else {
+      setbuttonDisabled(true);
+    }
+  }, [user]);
+
   return (
     <>
       {loading ? (
