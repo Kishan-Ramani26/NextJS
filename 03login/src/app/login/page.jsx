@@ -89,11 +89,11 @@ function page() {
                 disabled={buttonDisabled}
                 style={{
                   backgroundColor: buttonDisabled ? "#ccc" : "#4CAF50",
-                  color: "white",
+                  color: buttonDisabled ? "black" : "white",
                   cursor: buttonDisabled ? "not-allowed" : "pointer",
                 }}
               >
-                {buttonDisabled ? "Processing" : "Login"}
+                {buttonDisabled ? "Please fill the form" : "Login"}
               </button>
               <p className="text-sm text-gray-500 mt-4">
                 Don't have an account?{" "}

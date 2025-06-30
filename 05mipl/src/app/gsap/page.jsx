@@ -7,7 +7,7 @@ import { SplitText } from "gsap/SplitText";
 import Header from "../../Components/Header";
 import Navbar from "../../Components/Navbar";
 import { random } from "gsap/gsap-core";
-import { ReactLenis, useLenis } from 'lenis/react'
+// import { ReactLenis, useLenis } from 'lenis/react'
 
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
