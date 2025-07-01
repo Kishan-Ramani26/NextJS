@@ -3,7 +3,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bycrypt from "bcryptjs";
 import dbconnect from "@/lib/dbConnect";
 import User from "@/model/User";
-import { email, promise } from "zod/v4";
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -45,6 +44,21 @@ export const authOptions: NextAuthOptions = {
                 }
             }
         })
-    ]
+    ],
+    pages:{
+        signIn: "/login",
+    },
+    session: {
+        strategy: "jwt",
+    },
+    secret: process.env.NEXTAUTH_SECRET,
+    callbacks:{
+        async jwt({token,user}){
+            if(user){
+                token._id = token._id?.toString()
+            }
+            return token
+        }
+    }
 }
 
