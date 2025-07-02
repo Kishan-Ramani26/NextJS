@@ -1,5 +1,5 @@
 "use client";
-import React,{useRef} from "react";
+import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -9,11 +9,9 @@ import Navbar from "../../Components/Navbar";
 import { random } from "gsap/gsap-core";
 // import { ReactLenis, useLenis } from 'lenis/react'
 
-
 gsap.registerPlugin(SplitText, ScrollTrigger);
 const page = () => {
-
-  const lenisRef = useRef()
+  const lenisRef = useRef();
 
   useGSAP(() => {
     // const tl = gsap.timeline();
@@ -91,7 +89,20 @@ const page = () => {
         amount: 1,
       },
     });
+    gsap.to(".pg5text",{
+      width:`100%`,
+      duration:3,
+      scrollTrigger:{
+        trigger:`.page5`,
+        start:"top top",
+        scrub:3,
+        markers:true,
+        pin:`.page5`
+      }
+    })
   });
+
+
 
   return (
     <>
@@ -191,6 +202,23 @@ const page = () => {
               </span>
             </h1>
             <div className="absolute w-full h-[0.2vw] bg-black top-[8vw] scale-48"></div>
+          </div>
+        </div>
+
+        <div className="page5 h-screen w-full relative px-6 py-7 flex items-center justify-start">
+          <div className="text-start text-[6vw] leading-[1] opacity-20 whitespace-nowrap w-full">
+            <h1>
+              A collection of JS effects
+              <br />
+              Made with Gsap
+            </h1>
+          </div>
+          <div className="pg5text absolute text-black text-start text-[6vw] leading-[1] w-[0%] overflow-hidden whitespace-nowrap">
+            <h1>
+              A collection of JS effects
+              <br />
+              Made with Gsap
+            </h1>
           </div>
         </div>
       </main>
