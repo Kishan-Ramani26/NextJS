@@ -32,33 +32,36 @@ export const authOptions: NextAuthOptions = {
                         throw new Error("User not verified");
                     }
                     const isPasswordCorrect = await bycrypt.compare(credentials.password, users.password)
-                    
-                    if(isPasswordCorrect){
+
+                    if (isPasswordCorrect) {
                         return users;
-                    }else{
+                    } else {
                         throw new Error("Incorrect password");
                     }
-
+                    return users
                 } catch (error) {
                     throw new Error("Failed to login" + error);
                 }
             }
         })
     ],
-    pages:{
+    pages: {
         signIn: "/login",
     },
     session: {
         strategy: "jwt",
     },
     secret: process.env.NEXTAUTH_SECRET,
-    callbacks:{
-        async jwt({token,user}){
-            if(user){
-                token._id = token._id?.toString()
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token._id = user._id?.toString()
             }
             return token
-        }
+        },
+        async session({session,token}){
+            return session
+        },
     }
 }
 
