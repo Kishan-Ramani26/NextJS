@@ -28,8 +28,8 @@ const page = () => {
       router.push("/login");
       setloading(false);
     } catch (error) {
-      console.error("Error during signup:", error);
       toast.error("Signup failed. Please try again.");
+      console.error("Error during signup:", error);
     }
   };
 

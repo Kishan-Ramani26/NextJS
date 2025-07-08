@@ -25,6 +25,7 @@ function page() {
       router.push("/dashboard");
       setloading(false);
     } catch (error) {
+      toast.error("check Your ID and password!")
       console.error("Error during login:", error);
       setloading(false);
     }

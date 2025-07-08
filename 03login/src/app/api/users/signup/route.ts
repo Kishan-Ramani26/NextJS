@@ -10,7 +10,6 @@ export async function POST(requset: NextRequest) {
   try {
     const reqBody = requset.json();
     const { username, email, password } = await reqBody;
-    console.log(reqBody);
 
     const user = await User.findOne({ email });
     if (user) {
@@ -29,16 +28,28 @@ export async function POST(requset: NextRequest) {
       password: hashedPassword,
     });
 
-    const savedUser = await newUser.save();
-    console.log("Saved user",savedUser);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    await sendEmail({ email, emailType: "verify", userID: savedUser._id });
+    if (!email || emailRegex.test(email)) {
+      return NextResponse.json({
+        status: 400,
+        error: 'Invalid email address'
+      })
+    }
+    else {
+      const savedUser = await newUser.save();
+      console.log("Saved user", savedUser);
 
-    return NextResponse.json({
-      message: " User registered successfully",
-      sucssss: true,
-      savedUser
-    });
+      await sendEmail({ email, emailType: "verify", userID: savedUser._id });
+
+      return NextResponse.json({
+        message: " User registered successfully",
+        sucssss: true,
+        savedUser
+      });
+    }
+
+
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
