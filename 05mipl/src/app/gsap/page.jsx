@@ -50,10 +50,11 @@ const page = () => {
       marginLeft: 0,
       scrollTrigger: {
         trigger: ".page2",
-        start: "top top",
-        end: "bottom top",
+        start: "top 10%",
+        end: "150% 50%",
         scrub: 2,
-        // markers: true,
+        markers:true,
+        
         toggleAttribute: "play pause reverse play",
       },
     });
@@ -93,11 +94,11 @@ const page = () => {
       width:`100%`,
       duration:3,
       scrollTrigger:{
-        trigger:`.page5`,
-        start:"top top",
+        trigger:`.page4`,
+        start:"top 10%",
+        end:`200% 50%`,
         scrub:3,
-        markers:true,
-        pin:`.page5`
+        pin:`.page4`
       }
     })
   });
@@ -193,7 +194,7 @@ const page = () => {
           </div>
         </div>
 
-        <div className="page4 h-screen w-full relative px-6 py-7">
+        <div className="page4 h-screen w-full relative px-6 py-7 flex items-start justify-start flex-col gap-6">
           <div className="w-full flex items-start justify-center">
             <h1 className="overflow-hidden relative">
               <i className="ri-corner-down-right-line text-7xl font-light"></i>
@@ -203,24 +204,27 @@ const page = () => {
             </h1>
             <div className="absolute w-full h-[0.2vw] bg-black top-[8vw] scale-48"></div>
           </div>
+          <div className="flex items-start justify-start flex-col">
+             <div className="text-start text-[6vw] leading-[1] opacity-20 whitespace-nowrap w-full top-[10vh]">
+            <h1>
+              A collection of JS effects
+              <br />
+              Made with Gsap
+            </h1>
+          </div>
+          <div className="pg5text absolute text-black text-start text-[6vw] leading-[1] w-[0%] top-[9.5vw] overflow-hidden whitespace-nowrap">
+            <h1>
+              A collection of JS effects
+              <br />
+              Made with Gsap
+            </h1>
+          </div>
+          </div>
         </div>
 
-        <div className="page5 h-screen w-full relative px-6 py-7 flex items-center justify-start">
-          <div className="text-start text-[6vw] leading-[1] opacity-20 whitespace-nowrap w-full">
-            <h1>
-              A collection of JS effects
-              <br />
-              Made with Gsap
-            </h1>
-          </div>
-          <div className="pg5text absolute text-black text-start text-[6vw] leading-[1] w-[0%] overflow-hidden whitespace-nowrap">
-            <h1>
-              A collection of JS effects
-              <br />
-              Made with Gsap
-            </h1>
-          </div>
-        </div>
+        {/* <div className="page5 h-screen w-full relative px-6 py-7 flex items-start justify-start">
+         
+        </div> */}
       </main>
     </>
   );
