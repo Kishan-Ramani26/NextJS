@@ -53,8 +53,6 @@ const page = () => {
         start: "top 10%",
         end: "150% 50%",
         scrub: 2,
-        markers:true,
-        
         toggleAttribute: "play pause reverse play",
       },
     });
