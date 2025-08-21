@@ -6,7 +6,7 @@ export default function Home() {
 
   const [message, setmessage] = useState("")
   const [response, setResponse] = useState("")
-  const [loading, setloading] = useState(false) // Start as false
+  const [loading, setloading] = useState(false) 
 
   const handleChat = async () => {
     try {
