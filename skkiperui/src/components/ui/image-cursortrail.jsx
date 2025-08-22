@@ -9,7 +9,7 @@ export default function ImageCursorTrail({
   items,
   children,
   className,
-  maxNumberOfImages = 5,
+  maxNumberOfImages = 7,
   imgClass = "w-40 h-48",
   distance = 20,
   fadeAnimation = false,

@@ -1,3 +1,5 @@
+"use client";
+import { CardSwipe } from "@/components/ui/card-swipe";
 import ImageCursorTrail from "@/components/ui/image-cursortrail";
 import FlipLink from "@/components/ui/text-effect-flipper";
 
@@ -13,6 +15,13 @@ export default function Home() {
     "https://images.unsplash.com/photo-1706049379414-437ec3a54e93?q=80&w=1200&auto=format",
     "https://assets.lummi.ai/assets/Qmb2P6tF2qUaFXnXpnnp2sk9HdVHNYXUv6MtoiSq7jjVhQ?auto=format&w=1500",
     "https://images.unsplash.com/photo-1508873881324-c92a3fc536ba?q=80&w=1200&auto=format",
+  ];
+
+  const Cardimages = [
+    { src: "/card1.jpeg", alt: "Image 1" },
+    { src: "/card2.avif", alt: "Image 2" },
+    { src: "/card3.avif", alt: "Image 3" },
+    { src: "/card4.avif", alt: "Image 4" },
   ];
 
   return (
@@ -32,8 +41,16 @@ export default function Home() {
           </article>
         </ImageCursorTrail>
       </div>
-      <div className="w-full h-screen bg-black">
-        {/* <FlipLink href="https://x.com/guri_who">Behance</FlipLink> */}
+      <div className="w-full h-screen flex flex-col justify-center text-center bg-black">
+        <FlipLink href="#" className="bg-white">
+          Behance
+        </FlipLink>
+        <FlipLink href="#" className="bg-white">
+          Kishan
+        </FlipLink>
+      </div>
+      <div className="h-fit w-full bg-black text-white">
+        <CardSwipe images={Cardimages} />
       </div>
     </>
   );
