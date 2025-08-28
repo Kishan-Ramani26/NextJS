@@ -2,6 +2,7 @@
 import { CardSwipe } from "@/components/ui/card-swipe";
 import ImageCursorTrail from "@/components/ui/image-cursortrail";
 import FlipLink from "@/components/ui/text-effect-flipper";
+import ThemeToggleButton from "@/components/ui/theme-toggle-button";
 
 export default function Home() {
   const images = [
@@ -26,7 +27,9 @@ export default function Home() {
 
   return (
     <>
-      <div className="h-screen w-full bg-black">
+  <ThemeToggleButton variant=''/>
+
+      <div className="h-screen w-full ">
         <ImageCursorTrail
           items={images}
           maxNumberOfImages={5}
@@ -41,15 +44,15 @@ export default function Home() {
           </article>
         </ImageCursorTrail>
       </div>
-      <div className="w-full h-screen flex flex-col justify-center text-center bg-black">
-        <FlipLink href="#" className="bg-white">
+      <div className="w-full h-screen flex flex-col justify-center text-center ">
+        <FlipLink href="#" className="text-white">
           Behance
         </FlipLink>
-        <FlipLink href="#" className="bg-white">
+        <FlipLink href="#" className="">
           Kishan
         </FlipLink>
       </div>
-      <div className="h-fit w-full bg-black text-white">
+      <div className="h-fit w-full  text-white">
         <CardSwipe images={Cardimages} />
       </div>
     </>

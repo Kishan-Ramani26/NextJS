@@ -15,7 +15,7 @@ export async function POST(request: Request) {
             model: "gpt-3.5-turbo",
             messages: [{ role: 'user', content: message }]
         })
-
+        console.log(completions)
         return NextResponse.json({
             response: completions.choices[0].message.content
         })
