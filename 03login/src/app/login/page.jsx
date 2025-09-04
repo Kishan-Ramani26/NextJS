@@ -44,11 +44,11 @@ function page() {
     <>
       {loading ? (
         <motion.div
-          className="flex justify-center items-center h-screen"
+          className="flex justify-center items-center h-screen flex-col"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <div className="loader rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+          <div className="loader rounded-full absolute h-[80vh] w-[80vh] border-t-2 border-b-2 border-gray-900"></div>
           <p className="text-2xl font-bold text-white">Loading...</p>
         </motion.div>
       ) : (
@@ -56,7 +56,7 @@ function page() {
           className="h-screen w-full flex items-center justify-center text-white overflow-hidden"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.7 }}          
         >
           {/* img */}
           <motion.div
@@ -138,6 +138,7 @@ function page() {
             <Toaster />
           </motion.div>
         </motion.div>
+        
       )}
     </>
   );
