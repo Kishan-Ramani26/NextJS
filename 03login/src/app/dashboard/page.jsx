@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
+import WrapButton from "@/components/ui/wrapbutton";
 // import ImageCursorTrail from "@/components/ui/image-cursortrail";
 
 const page = () => {
@@ -54,12 +55,12 @@ const page = () => {
 
       <div className="flex flex-col items-center justify-center h-screen gap-4">
         <h1>Dashboard</h1>
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 disabled:bg-gray-400 cursor-pointer"
-          onClick={getUserDetails}
-        >
-          Get User Details
-        </button>
+       
+         <WrapButton className="mt-10" href="/docs/components/card-carousel" >
+            <Globe className="animate-spin " />
+            Get started
+        </WrapButton>
+
         <h2 className="text-xl text-white">
           <Link href={`/profile/${data}`}>
             User ID: {data ? data : "Nothing"}
@@ -86,3 +87,5 @@ const page = () => {
 };
 
 export default page;
+
+
