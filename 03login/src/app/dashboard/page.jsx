@@ -4,8 +4,6 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
-import WrapButton from "@/components/ui/wrapbutton";
-// import ImageCursorTrail from "@/components/ui/image-cursortrail";
 
 const page = () => {
   const router = useRouter();
@@ -56,10 +54,12 @@ const page = () => {
       <div className="flex flex-col items-center justify-center h-screen gap-4">
         <h1>Dashboard</h1>
        
-         <WrapButton className="mt-10" href="/docs/components/card-carousel" >
+        {/* <WrapButton className="mt-10" href="/docs/components/card-carousel" >
             <Globe className="animate-spin " />
             Get started
-        </WrapButton>
+        </WrapButton> */}
+
+        
 
         <h2 className="text-xl text-white">
           <Link href={`/profile/${data}`}>
@@ -82,6 +82,8 @@ const page = () => {
             </h1>
           </article>
         </ImageCursorTrail> */}
+
+        
     </div>
   );
 };
