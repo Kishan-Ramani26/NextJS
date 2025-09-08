@@ -24,7 +24,7 @@ const page = () => {
       const response = await axios.get("http://localhost:3000/api/users/me", { withCredentials: true });
       console.log(response.data);
       toast.success("User details fetched successfully");
-      setData(response.data.data?._id); 
+      setData(response.data.data?.email); 
     } catch (error) {
       console.log("Error in getUserDetails:", error.response?.data || error.message);
       toast.error("error in getting user details");
