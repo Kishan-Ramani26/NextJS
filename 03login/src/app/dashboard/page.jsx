@@ -4,6 +4,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
+import CrowdCanvas from "@/components/ui/skiper-ui/CrowdCanvas";
+import Skiper39 from "@/components/ui/skiper-ui/Skiper39";
 
 const page = () => {
   const router = useRouter();
@@ -21,16 +23,25 @@ const page = () => {
 
   const getUserDetails = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/users/me", { withCredentials: true });
+      const response = await axios.get("http://localhost:3000/api/users/me", {
+        withCredentials: true,
+      });
       console.log(response.data);
       toast.success("User details fetched successfully");
-      setData(response.data.data?.email); 
+      setData(response.data.data?.email);
     } catch (error) {
-      console.log("Error in getUserDetails:", error.response?.data || error.message);
+      console.log(
+        "Error in getUserDetails:",
+        error.response?.data || error.message
+      );
       toast.error("error in getting user details");
     }
   };
-  
+
+  const DemoSkiper39 = () => {
+    return <Skiper39 />;
+  };
+
   return (
     <div>
       <button
@@ -43,7 +54,10 @@ const page = () => {
       <div className="flex flex-col items-center justify-center h-screen gap-4">
         <h1>Dashboard</h1>
 
-        <button onClick={getUserDetails} className="border border-white px-4 py-2 rounded-2xl cursor-pointer">
+        <button
+          onClick={getUserDetails}
+          className="border border-white px-4 py-2 rounded-2xl cursor-pointer"
+        >
           Get User Details
         </button>
         <h2 className="text-xl text-white">
@@ -54,6 +68,9 @@ const page = () => {
       </div>
       <Toaster />
 
+      <div className="relative h-screen w-full">
+        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} />
+      </div>
     </div>
   );
 };
