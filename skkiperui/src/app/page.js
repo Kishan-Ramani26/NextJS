@@ -1,6 +1,7 @@
 "use client";
 import { CardSwipe } from "@/components/ui/card-swipe";
 import ImageCursorTrail from "@/components/ui/image-cursortrail";
+import { Skiper39,CrowdCanvas } from "@/components/ui/skiper-ui/skiper39";
 import FlipLink from "@/components/ui/text-effect-flipper";
 import ThemeToggleButton from "@/components/ui/theme-toggle-button";
 
@@ -24,6 +25,8 @@ export default function Home() {
     { src: "/card3.avif", alt: "Image 3" },
     { src: "/card4.avif", alt: "Image 4" },
   ];
+
+
 
   return (
     <>
@@ -54,6 +57,10 @@ export default function Home() {
       </div>
       <div className="h-fit w-full  text-white">
         <CardSwipe images={Cardimages} />
+      </div>
+
+      <div className="relative h-screen w-full">
+       <Skiper39 />
       </div>
     </>
   );
