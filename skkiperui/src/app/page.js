@@ -2,6 +2,7 @@
 import { CardSwipe } from "@/components/ui/card-swipe";
 import ImageCursorTrail from "@/components/ui/image-cursortrail";
 import { Skiper39,CrowdCanvas } from "@/components/ui/skiper-ui/skiper39";
+import { SpringMouseFollow } from "@/components/ui/skiper-ui/skiper61";
 import FlipLink from "@/components/ui/text-effect-flipper";
 import ThemeToggleButton from "@/components/ui/theme-toggle-button";
 
@@ -61,6 +62,9 @@ export default function Home() {
 
       <div className="relative h-screen w-full">
        <Skiper39 />
+      </div>
+      <div className="relative h-screen w-full">
+       <SpringMouseFollow />
       </div>
     </>
   );
