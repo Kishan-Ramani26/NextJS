@@ -4,8 +4,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
-import CrowdCanvas from "@/components/ui/skiper-ui/CrowdCanvas";
-import Skiper39 from "@/components/ui/skiper-ui/Skiper39";
+
+
 
 const page = () => {
   const router = useRouter();
@@ -68,9 +68,6 @@ const page = () => {
       </div>
       <Toaster />
 
-      <div className="relative h-screen w-full">
-        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} />
-      </div>
     </div>
   );
 };
