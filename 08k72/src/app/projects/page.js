@@ -20,11 +20,24 @@ const projects = [
 	},
 	{
 		title: "Project Four",
-		image: "/images/project4.jpg",
+		image: "/images/MEGGIE_480X640_2-480x640.jpg",
 		link: "/projects/4",
 	},
-	// Add more projects as needed
+	{
+		title: "Project Five",
+		image: "/images/Claire_480x640-480x640.jpg",
+		link: "/projects/5",
+	},
+	
+	{
+		title: "Project Six",
+		image: "/images/Claire_480x640-480x640.jpg",
+		link: "/projects/6",
+	},
+	
 ];
+
+
 
 const Page = () => {
 	return (
@@ -57,3 +70,5 @@ const Page = () => {
 };
 
 export default Page;
+
+

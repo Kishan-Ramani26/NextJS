@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/all'
+import { ScrollTrigger } from "gsap/all";
 import React, { useRef } from "react";
 
 const page = () => {
@@ -13,7 +13,7 @@ const page = () => {
   const imageArray = [
     "/images/Carl_480x640-480x640.jpg",
     "/images/MAXIME_480X640_2-480x640.jpg",
-    "/images/CAMILLE_480X640_2-480x640.jpg",    
+    "/images/CAMILLE_480X640_2-480x640.jpg",
     "/images/ChantalG_480x640-480x640.jpg",
     "/images/MEGGIE_480X640_2-480x640.jpg",
     "/images/Claire_480x640-480x640.jpg",
@@ -25,20 +25,21 @@ const page = () => {
 
   useGSAP(() => {
     gsap.to(imageDivRaf.current, {
-      scrollTrigger: {
-        trigger: imageDivRaf.current,    
+      scrollTrigger: { 
+        trigger: imageDivRaf.current,
         start: "17% 17%",
-        end: "200% -70%",
+        end: "200% -100%",
         pin: true,
         pinSpacing: true,
-        pinReparent: true,    
-        scrub: 2, // smooth scrubbing with 1s easing
+        pinReparent: true,
+        scrub: 2,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: (elem) => {
           let imageIndex;
           if (elem.progress < 1) {
             imageIndex = Math.floor(elem.progress * imageArray.length);
+            console.log(imageIndex);
           } else {
             imageIndex = imageArray.length - 1;
           }
@@ -51,10 +52,15 @@ const page = () => {
   return (
     <>
       <div className="page1">
-        <a href="/" className="absolute top-3 right-10 cursor-pointer border-1 text-xl px-4 py-1 rounded-4xl hover:bg-[#796556] hover:text-black transition-all duration-300">Home</a>
+        <a
+          href="/"
+          className="absolute top-3 right-10 cursor-pointer border-1 text-xl px-4 py-1 rounded-4xl hover:bg-[#796556] hover:text-black transition-all duration-300"
+        >
+          Home
+        </a>
         <div
           ref={imageDivRaf}
-          className="h-[25vw] w-[20vw] bg-red-50 absolute top-30 left-96 rounded-4xl overflow-hidden "
+          className="h-[25vw] w-[20vw] z-1 absolute top-30 left-96 rounded-4xl overflow-hidden "
         >
           <img
             ref={imgageRaf}
