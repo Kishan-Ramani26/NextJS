@@ -21,11 +21,10 @@ const Stair = ({ children }) => {
       display: "block",
     });
 
-    
     tl.from(".stair", {
       yPercent: -100,
       stagger: {
-        amount: -0.25,
+        amount: 0.25,
       },
       duration: 0.5,
     });
@@ -47,23 +46,21 @@ const Stair = ({ children }) => {
 
   return (
     <>
-      
       <div
         ref={stairRef}
         className="fixed top-0 left-0 w-full h-screen z-50 pointer-events-none"
       >
         <div className="h-full w-full flex items-center justify-center">
-          <div className="stair h-full w-1/5 bg-black"></div>
-          <div className="stair h-full w-1/5 bg-black"></div>
-          <div className="stair h-full w-1/5 bg-black"></div>
-          <div className="stair h-full w-1/5 bg-black"></div>
-          <div className="stair h-full w-1/5 bg-black"></div>
+          <div className="stair h-screen w-1/5 bg-black"></div>
+          <div className="stair h-screen w-1/5 bg-black"></div>
+          <div className="stair h-screen w-1/5 bg-black"></div>
+          <div className="stair h-screen w-1/5 bg-black"></div>
+          <div className="stair h-screen w-1/5 bg-black"></div>
         </div>
       </div>
 
-      
       {showChildren && (
-        <div className="fade-in">
+        <div>
           {children}
         </div>
       )}

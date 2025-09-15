@@ -1,9 +1,10 @@
-"use client";
+"use client"
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
+import { TextRoll } from "@/components/v1/Skiper58"; // or the correct path to your TextRoll component
 
 
 
@@ -38,10 +39,6 @@ const page = () => {
     }
   };
 
-  const DemoSkiper39 = () => {
-    return <Skiper39 />;
-  };
-
   return (
     <div>
       <button
@@ -67,7 +64,9 @@ const page = () => {
         </h2>
       </div>
       <Toaster />
-
+      <div className="h-screen w-full ">
+        <TextRoll className="text-2xl font-bold">Hover me</TextRoll>
+      </div>
     </div>
   );
 };

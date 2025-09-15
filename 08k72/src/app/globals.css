@@ -7,10 +7,10 @@
   font-style: normal;
 }
 
-.fade-in {
+/* .fade-in {
   animation: fadeIn 0.5s ease-in-out forwards;
   opacity: 0;
-}
+} */
 
 @keyframes fadeIn {
   to {
